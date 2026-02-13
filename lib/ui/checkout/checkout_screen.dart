@@ -4,6 +4,7 @@ import 'package:fintesthub_flutter/ui/checkout/_widgets/installment_list.dart';
 import 'package:fintesthub_flutter/ui/checkout/_widgets/payment_method_list.dart';
 import 'package:flutter/material.dart';
 
+import '../_core/app_colors.dart';
 import 'checkout_controller.dart';
 import 'models/transaction_result_ui.dart';
 
@@ -109,7 +110,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 Container(
                   color: Colors.black.withValues(alpha: 0.5),
                   child: const Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(color: AppColors.primary),
                   ),
                 ),
             ],
