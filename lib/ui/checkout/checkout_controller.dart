@@ -172,7 +172,7 @@ class CheckoutController extends ChangeNotifier {
         Future<PaymentResult>() => throw UnimplementedError(),
       };
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
       transactionResult = TransactionResultUi(
         isSuccess: false,
         title: "Erro",

@@ -1,4 +1,4 @@
-import 'package:fintesthub_flutter/data/payment/mock_payment_processor.dart';
+import 'package:fintesthub_flutter/data/msitef/msitef_payment_processor.dart';
 import 'package:fintesthub_flutter/ui/checkout/_widgets/header_display.dart';
 import 'package:fintesthub_flutter/ui/checkout/_widgets/installment_list.dart';
 import 'package:fintesthub_flutter/ui/checkout/_widgets/payment_method_list.dart';
@@ -25,7 +25,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     super.initState();
     _controller = CheckoutController(
       amountInCents: widget.amountInCents,
-      paymentProcessor: MockPaymentProcessor(),
+      paymentProcessor: MSitefPaymentProcessor(),
     );
 
     _controller.addListener(_onControllerChanged);
