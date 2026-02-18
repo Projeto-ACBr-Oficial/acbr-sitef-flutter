@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Image.asset('assets/images/ic_credit_card.png'),
             const SizedBox(height: 10),
             Text(
-              'FinTestHub Flutter',
+              'Fiserv Flutter',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 5),
