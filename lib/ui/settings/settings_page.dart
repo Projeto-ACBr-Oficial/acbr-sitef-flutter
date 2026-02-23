@@ -57,6 +57,11 @@ class _SettingsPageState extends State<SettingsPage> {
             onChanged: (val) =>
                 _controller.updateField(SettingsKeys.cnpjAutomacao, val),
           ),
+          const SizedBox(height: 30),
+          ElevatedButton(
+            onPressed: null,
+            child: const Text("Menu administrativo"),
+          ),
         ],
       ),
     );
