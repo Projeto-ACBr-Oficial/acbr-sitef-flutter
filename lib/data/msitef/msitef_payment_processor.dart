@@ -1,4 +1,4 @@
-import 'package:fintesthub_flutter/domain/payment/models/mappers/payment_mapper.dart';
+import 'package:fintesthub_flutter/data/msitef/msitef_payment_mapper.dart';
 import 'package:fintesthub_flutter/domain/payment/models/payment.dart';
 import 'package:fintesthub_flutter/domain/payment/models/payment_result.dart';
 import 'package:fintesthub_flutter/domain/payment/repositories/payment_processor.dart';
@@ -11,7 +11,9 @@ class MSitefPaymentProcessor extends PaymentProcessor {
   @override
   Future<PaymentResult> processPayment(Payment payment) async {
     try {
-      final result = await _channel.invokeMethod('pay', payment.toMap());
+      final map = MsitefPaymentMapper.toMsitefMap(payment);
+
+      final result = await _channel.invokeMethod('pay', map);
 
       return _parseResult(result);
     } on PlatformException catch (e) {
@@ -32,14 +34,15 @@ class MSitefPaymentProcessor extends PaymentProcessor {
     }
 
     return switch (result['status']) {
-      'SUCCESS' =>
-          SuccessResult(result['id'].toString(), message: result['message']),
-      'FAILURE' =>
-          FailureResult(
-              result['errorCode'] ?? '1', result['errorMessage'] ?? 'Erro'),
-      'CANCELLED' =>
-          CancelledResult(
-              message: result['message']),
+      'SUCCESS' => SuccessResult(
+        result['id'].toString(),
+        message: result['message'],
+      ),
+      'FAILURE' => FailureResult(
+        result['errorCode'] ?? '1',
+        result['errorMessage'] ?? 'Erro',
+      ),
+      'CANCELLED' => CancelledResult(message: result['message']),
       _ => CancelledResult(message: "Status desconhecido: ${result['status']}"),
     };
   }

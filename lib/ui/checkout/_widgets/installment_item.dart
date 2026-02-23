@@ -1,3 +1,4 @@
+import 'package:fintesthub_flutter/ui/_core/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -21,7 +22,7 @@ class InstallmentItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final String monthlyValue = _formatCurrency(option.monthlyAmount);
     final String totalValue = _formatCurrency(option.totalAmount);
-    final Color mainColor = Theme.of(context).primaryColor;
+    final Color mainColor = AppColors.primary;
 
     return Column(
       children: [

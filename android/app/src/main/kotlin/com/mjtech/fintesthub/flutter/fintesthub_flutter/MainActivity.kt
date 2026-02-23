@@ -55,11 +55,11 @@ class MainActivity : FlutterActivity() {
         val fiservIntent = Intent("br.com.softwareexpress.sitef.msitef.ACTIVITY_CLISITEF").apply {
 
             // Parâmetros de entrada para o SiTef
-            putExtra("empresaSitef", "00000000")
-            putExtra("enderecoSitef", "192.168.237.24".getFullAddress())
-            putExtra("operador", "0001")
-            putExtra("CNPJ_CPF", "18760540000139")
-            putExtra("cnpj_automacao", "18760540000139")
+            putExtra("empresaSitef", payment.empresaSitef)
+            putExtra("enderecoSitef", payment.enderecoSitef.getFullAddress())
+            putExtra("operador", payment.operador)
+            putExtra("CNPJ_CPF", payment.cnpjCpf)
+            putExtra("cnpj_automacao", payment.cnpjAutomacao)
 
             // Dados da transação
             putExtra("data", getCurrentDate())

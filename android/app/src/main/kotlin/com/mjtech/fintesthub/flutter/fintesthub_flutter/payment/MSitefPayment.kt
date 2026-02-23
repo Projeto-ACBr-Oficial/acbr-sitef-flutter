@@ -6,7 +6,11 @@ data class MSitefPayment(
     val type: String,
     val installments: Int,
     val installmentType: String,
-    val timestamp: Long
+    val empresaSitef: String,
+    val enderecoSitef: String,
+    val operador: String,
+    val cnpjCpf: String,
+    val cnpjAutomacao: String
 ) {
     companion object {
         fun fromMap(map: Map<String, Any?>): MSitefPayment {
@@ -21,7 +25,15 @@ data class MSitefPayment(
 
                 installmentType = map["installmentType"] as? String ?: "none",
 
-                timestamp = (map["timestamp"] as? Number)?.toLong() ?: 0L
+                empresaSitef = map["empresaSitef"] as? String ?: "",
+
+                enderecoSitef = map["enderecoSitef"] as? String ?: "",
+
+                operador = map["operador"] as? String ?: "",
+
+                cnpjCpf = map["cnpjCpf"] as? String ?: "",
+
+                cnpjAutomacao = map["cnpjAutomacao"] as? String ?: ""
             )
         }
     }
