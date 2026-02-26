@@ -1,4 +1,4 @@
-package com.mjtech.fintesthub.flutter.fintesthub_flutter.payment
+package com.mjtech.fintesthub.flutter.fintesthub_flutter.common
 
 import android.content.Intent
 

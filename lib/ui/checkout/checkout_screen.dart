@@ -1,4 +1,4 @@
-import 'package:fintesthub_flutter/data/msitef/msitef_payment_processor.dart';
+import 'package:fintesthub_flutter/data/msitef/payment/msitef_payment_processor.dart';
 import 'package:fintesthub_flutter/ui/checkout/_widgets/header_display.dart';
 import 'package:fintesthub_flutter/ui/checkout/_widgets/installment_list.dart';
 import 'package:fintesthub_flutter/ui/checkout/_widgets/payment_method_list.dart';
@@ -53,7 +53,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       barrierDismissible: false,
       builder: (dialogContext) => AlertDialog(
         title: Text(result.title),
-        content: Text(result.message),
+        content: SingleChildScrollView(child: Text(result.message)),
         actions: [
           TextButton(
             onPressed: () {

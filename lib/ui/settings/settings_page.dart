@@ -3,6 +3,7 @@ import 'package:fintesthub_flutter/ui/settings/settings_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/config/local_settings_keys.dart';
+import '../../data/msitef/admin/msitef_admin_action.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -12,11 +13,12 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  final _controller = SettingsController();
+  late final SettingsController _controller;
 
   @override
   void initState() {
     super.initState();
+    _controller = SettingsController(adminAction: MsitefAdminAction());
     _controller.loadSettings();
   }
 
@@ -59,7 +61,13 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           const SizedBox(height: 30),
           ElevatedButton(
-            onPressed: null,
+            onPressed: () => _controller.openAdminMenu(
+              onReceiptReceived: (receipt) =>
+                  _showReceiptDialog(context, receipt),
+              onError: (msg) => ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(msg))),
+            ),
             child: const Text("Menu administrativo"),
           ),
         ],
@@ -88,6 +96,22 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           contentPadding: const EdgeInsets.symmetric(vertical: 8),
         ),
+      ),
+    );
+  }
+
+  void _showReceiptDialog(BuildContext context, String receipt) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Comprovante"),
+        content: SingleChildScrollView(child: Text(receipt)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Ok"),
+          ),
+        ],
       ),
     );
   }

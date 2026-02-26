@@ -1,10 +1,10 @@
 import 'package:fintesthub_flutter/domain/payment/models/payment.dart';
 
-import '../../core/config/local_settings_keys.dart';
-import '../../domain/settings/models/settings.dart';
+import '../../../core/config/local_settings_keys.dart';
+import '../../../domain/settings/models/settings.dart';
 
 class MsitefPaymentMapper {
-  static Map<String, dynamic> toMsitefMap(Payment payment) {
+  static Map<String, dynamic> toMap(Payment payment) {
     return {
       'id':payment.id,
       'amount': payment.amount,

@@ -1,4 +1,4 @@
-import 'package:fintesthub_flutter/data/msitef/msitef_payment_mapper.dart';
+import 'package:fintesthub_flutter/data/msitef/payment/msitef_payment_mapper.dart';
 import 'package:fintesthub_flutter/domain/payment/models/payment.dart';
 import 'package:fintesthub_flutter/domain/payment/models/payment_result.dart';
 import 'package:fintesthub_flutter/domain/payment/repositories/payment_processor.dart';
@@ -11,7 +11,7 @@ class MSitefPaymentProcessor extends PaymentProcessor {
   @override
   Future<PaymentResult> processPayment(Payment payment) async {
     try {
-      final map = MsitefPaymentMapper.toMsitefMap(payment);
+      final map = MsitefPaymentMapper.toMap(payment);
 
       final result = await _channel.invokeMethod('pay', map);
 
